@@ -7,6 +7,7 @@ public class Timer : MonoBehaviour
     public float currentTime;
     private bool timing;
 
+
     public void StartTimer()
     {
         timing = true;

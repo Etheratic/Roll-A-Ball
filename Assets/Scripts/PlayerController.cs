@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -9,7 +10,14 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private int pickupCount;
     private Timer timer;
+    private bool gameOver = false;
 
+    [Header("UI")]
+    public GameObject inGamePanel;
+    public GameObject winPanel;
+    public TMP_Text scoreText;
+    public TMP_Text timerText;
+    public TMP_Text winTimeText;
 
     // Start is called before the first frame update
     void Start()
@@ -23,17 +31,42 @@ public class PlayerController : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         timer.StartTimer();
 
+        //Turn on our in Game Panel
+        inGamePanel.SetActive(true);
+
+        //Turn off our win panel
+        winPanel.SetActive(false);
+
+
+
+
+    }
+
+    private void Update()
+    {
+        //display timer in timer text
+        timerText.text = "Time: " + timer.GetTime().ToString("F2");
 
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        float moveHorizontal = Input.GetAxis("Horizontal");
-        float moveVertical = Input.GetAxis("Vertical");
+       if(gameOver == false)
+        {
+            float moveHorizontal = Input.GetAxis("Horizontal");
+            float moveVertical = Input.GetAxis("Vertical");
 
-        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-        rb.AddForce(movement * speed);
+            Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+            rb.AddForce(movement * speed);
+
+
+
+
+        }
+        
+        
+
 
     }
 
@@ -53,27 +86,76 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
+
     void CheckPickups()
     {
-        print("Pickup Count: " + pickupCount);
+        //Display amount of pickups on ours screen
+
+        scoreText.text = "Pick Ups Left: " + pickupCount;
+
 
         if (pickupCount == 0)
         {
-            timer.StopTimer();
-            print("yay you won!, your time was " + timer.GetTime());
-
+            WinGame();
+          
         }
+
+
+    }
+
+    void WinGame()
+    {
+
+        //set the gameOver to try
+        gameOver = true;
+        //stop the timer
+        timer.StopTimer();
+        //turn on our win panel
+        winPanel.SetActive(true);
+        //turn off our ingame panel
+        inGamePanel.SetActive(false);
+        //display the timer on the win time text
+        winTimeText.text = "your time was: " + timer.GetTime().ToString("F2");
+
+        //set the velocity of the rigidbody to 0
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+       
+
+
+    }
+
+
+    //temporary, will be removed for A2
+
+    public void RestartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene
+            (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
+
+
+    }
+    
+    public void QuitGame()
+    {
+        Application.Quit();
 
     }
 
 
 
-    
-    
-    
-
 
 }
+
+
+
+    
+    
+    
+
+
+
 
 
 
