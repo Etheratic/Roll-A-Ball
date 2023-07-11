@@ -7,18 +7,20 @@ public class Timer : MonoBehaviour
     public float currentTime;
     private bool timing;
 
-
+    //start timer
     public void StartTimer()
     {
         timing = true;
     }
  
+    //stop timer
     public void StopTimer()
     {
         timing = false;
 
     }
 
+    //set current time to Gettime title
     public float GetTime()
     {
         return currentTime;
@@ -28,6 +30,8 @@ public class Timer : MonoBehaviour
 
 
     void Update()
+
+        //timer according delta time
     {
         if(timing == true)
         {
