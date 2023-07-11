@@ -54,8 +54,12 @@ public class PlayerController : MonoBehaviour
     {
        if(gameOver == false)
         {
+            //detect movement inputs
+
             float moveHorizontal = Input.GetAxis("Horizontal");
             float moveVertical = Input.GetAxis("Vertical");
+
+            //apply force
 
             Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
             rb.AddForce(movement * speed);
@@ -94,6 +98,7 @@ public class PlayerController : MonoBehaviour
 
         scoreText.text = "Pick Ups Left: " + pickupCount;
 
+        //display win screen if pickups = 0
 
         if (pickupCount == 0)
         {
