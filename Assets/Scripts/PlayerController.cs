@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -11,6 +12,9 @@ public class PlayerController : MonoBehaviour
     private int pickupCount;
     private Timer timer;
     private bool gameOver = false;
+    GameObject resetPoint;
+    bool resetting = false;
+    Color originalColour;
 
     [Header("UI")]
     public GameObject inGamePanel;
@@ -37,6 +41,13 @@ public class PlayerController : MonoBehaviour
         //Turn off our win panel
         winPanel.SetActive(false);
 
+        //setting up reset point
+        resetPoint = GameObject.Find("Reset Point");
+        originalColour = GetComponent<Renderer>().material.color;
+
+        Time.timeScale = 1;
+
+
 
 
 
@@ -54,6 +65,10 @@ public class PlayerController : MonoBehaviour
     {
        if(gameOver == false)
         {
+
+            if (resetting)
+                return;
+
             //detect movement inputs
 
             float moveHorizontal = Input.GetAxis("Horizontal");
@@ -79,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Pick Up") ;
+        if (other.tag == "Pick Up")
         {
             Destroy(other.gameObject);
             //decrement the pickup count
@@ -88,6 +103,8 @@ public class PlayerController : MonoBehaviour
             CheckPickups();
 
         }
+
+
     }
 
 
@@ -148,6 +165,36 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Respawn"))
+        {
+            StartCoroutine(ResetPlayer());
+        }
+
+
+
+    }
+
+    public IEnumerator ResetPlayer()
+
+    {
+        resetting = true;
+        GetComponent<Renderer>().material.color = Color.black;
+        rb.velocity = Vector3.zero;
+        Vector3 startPos = transform.position;
+        float resetSpeed = 2f;
+        var i = 0.0f;
+        var rate = 1.0f / resetSpeed;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            transform.position = Vector3.Lerp(startPos, resetPoint.transform.position, i);
+            yield return null;
+        }
+        GetComponent<Renderer>().material.color = originalColour;
+        resetting = false;
+    }
 
 
 
