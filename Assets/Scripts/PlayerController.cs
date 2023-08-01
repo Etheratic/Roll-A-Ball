@@ -10,11 +10,14 @@ public class PlayerController : MonoBehaviour
     public float speed = 5.0f;
     private Rigidbody rb;
     private int pickupCount;
-    private Timer timer;
+
     private bool gameOver = false;
     GameObject resetPoint;
     bool resetting = false;
     Color originalColour;
+    CameraController cameraController;
+    GameController gameController;
+    private Timer timer;
 
     [Header("UI")]
     public GameObject inGamePanel;
@@ -32,8 +35,7 @@ public class PlayerController : MonoBehaviour
         //Run the check pickups function
         CheckPickups();
         //get the timer object
-        timer = FindObjectOfType<Timer>();
-        timer.StartTimer();
+        
 
         //Turn on our in Game Panel
         inGamePanel.SetActive(true);
@@ -45,52 +47,53 @@ public class PlayerController : MonoBehaviour
         resetPoint = GameObject.Find("Reset Point");
         originalColour = GetComponent<Renderer>().material.color;
 
+        cameraController = FindObjectOfType<CameraController>();
+
         Time.timeScale = 1;
 
-
-
-
-
+        gameController = FindObjectOfType<GameController>();
+        timer = FindObjectOfType<Timer>();
+        if (gameController.gameType == GameType.SpeedRun)
+            StartCoroutine(timer.StartCountdown());
     }
 
     private void Update()
     {
-        //display timer in timer text
-        timerText.text = "Time: " + timer.GetTime().ToString("F2");
 
     }
+   
 
     // Update is called once per frame
     void FixedUpdate()
     {
-       if(gameOver == false)
+        if (gameController.gameType == GameType.SpeedRun && !timer.IsTiming())
+            return;
+
+        if (gameOver)
+            return;
+
+        if (resetting)
+            return;
+
+        //detect movement inputs
+        float moveHorizontal = Input.GetAxis("Horizontal");
+        float moveVertical = Input.GetAxis("Vertical");
+        //apply force
+        Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
+       
+        if (cameraController.cameraStyle == CameraStyle.Free)
         {
-
-            if (resetting)
-                return;
-
-            //detect movement inputs
-
-            float moveHorizontal = Input.GetAxis("Horizontal");
-            float moveVertical = Input.GetAxis("Vertical");
-
-            //apply force
-
-            Vector3 movement = new Vector3(moveHorizontal, 0, moveVertical);
-            rb.AddForce(movement * speed);
-
-
-
-
+            //rotates the player to the direction of the camera
+            transform.eulerAngles = Camera.main.transform.eulerAngles;
+            //translates the input vectors into coordinates
+            movement = transform.TransformDirection(movement);
         }
-        
-        
+
+        rb.AddForce(movement * speed);
+
 
 
     }
-
-
-
 
     private void OnTriggerEnter(Collider other)
     {
@@ -131,18 +134,18 @@ public class PlayerController : MonoBehaviour
 
         //set the gameOver to try
         gameOver = true;
-        //stop the timer
-        timer.StopTimer();
         //turn on our win panel
         winPanel.SetActive(true);
         //turn off our ingame panel
         inGamePanel.SetActive(false);
-        //display the timer on the win time text
-        winTimeText.text = "your time was: " + timer.GetTime().ToString("F2");
+       
 
         //set the velocity of the rigidbody to 0
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
+
+        if (gameController.gameType == GameType.SpeedRun)
+            timer.StopTimer();
        
 
 
