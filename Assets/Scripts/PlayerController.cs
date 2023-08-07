@@ -88,11 +88,7 @@ public class PlayerController : MonoBehaviour
             //translates the input vectors into coordinates
             movement = transform.TransformDirection(movement);
         }
-
         rb.AddForce(movement * speed);
-
-
-
     }
 
     private void OnTriggerEnter(Collider other)
@@ -104,10 +100,7 @@ public class PlayerController : MonoBehaviour
             pickupCount -= 1;
             //Run the check pickups function
             CheckPickups();
-
         }
-
-
     }
 
 
@@ -115,40 +108,30 @@ public class PlayerController : MonoBehaviour
     void CheckPickups()
     {
         //Display amount of pickups on ours screen
-
         scoreText.text = "Pick Ups Left: " + pickupCount;
 
         //display win screen if pickups = 0
-
         if (pickupCount == 0)
         {
-            WinGame();
-          
+            WinGame();  
         }
-
-
     }
 
     void WinGame()
     {
-
         //set the gameOver to try
         gameOver = true;
         //turn on our win panel
         winPanel.SetActive(true);
         //turn off our ingame panel
         inGamePanel.SetActive(false);
-       
-
+      
         //set the velocity of the rigidbody to 0
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
         if (gameController.gameType == GameType.SpeedRun)
-            timer.StopTimer();
-       
-
-
+            timer.StopTimer();    
     }
 
 
@@ -158,14 +141,11 @@ public class PlayerController : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene
             (UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-
-
     }
     
     public void QuitGame()
     {
         Application.Quit();
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -174,9 +154,6 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ResetPlayer());
         }
-
-
-
     }
 
     public IEnumerator ResetPlayer()
