@@ -1,3 +1,4 @@
+using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,10 +9,11 @@ public class PlayerController : MonoBehaviour
 {
 
     public float speed = 5.0f;
-    private Rigidbody rb;
+    public Rigidbody rb;
     private int pickupCount;
 
     private bool gameOver = false;
+    public bool isTalking;
     GameObject resetPoint;
     bool resetting = false;
     Color originalColour;
@@ -59,7 +61,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
+        if(isTalking)
+        {
+           
+        }
+        else
+        {
+            rb.drag = 0.1f;
+        }
     }
    
 
@@ -100,6 +109,12 @@ public class PlayerController : MonoBehaviour
             pickupCount -= 1;
             //Run the check pickups function
             CheckPickups();
+            Time.timeScale = 0;
+        }
+
+        if (other.GetComponent<NPCController>() != null)
+        {
+            other.GetComponent<NPCController>().StartNPC();
         }
     }
 
