@@ -2980,7 +2980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 569323410}
   m_Layer: 5
-  m_Name: JockDialogue
+  m_Name: NPCDialogue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4712,7 +4712,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: can
-  characterDialogue: What does a spermologist study?, A:Trivia, B:Sperm whales, C:Chickens
+  characterDialogue: What does a spermologist study?
   correctAnwser: Trivia
   incorrectAnswer1: Sperm whale
   incorrectAnswer2: Chicken
@@ -6222,7 +6222,7 @@ GameObject:
   - component: {fileID: 1123683491}
   - component: {fileID: 1123683490}
   m_Layer: 5
-  m_Name: JockImage
+  m_Name: NPCImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6366,11 +6366,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Donut
-  characterDialogue: 'Whats the most popular sport Worldwide? A:Soccar, B: Basketball,
-    C:Golf'
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterDialogue: Whats the most popular sport Worldwide?
+  correctAnwser: Soccar
+  incorrectAnswer1: Golf
+  incorrectAnswer2: BasketBall
   characterImage: {fileID: 21300000, guid: daea0f0795c7cbf439d7d1be37abb1ab, type: 3}
 --- !u!1 &1154307946
 GameObject:
@@ -8056,8 +8055,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 61.8
+  m_fontSizeBase: 61.8
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8478,11 +8477,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: NErd
-  characterDialogue: Which African country was formerly known as Abyssinia? A:South
-    Africa, B:Jordan C:Ethiopia
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterDialogue: Which African country was formerly known as Abyssinia?
+  correctAnwser: Ethiopia
+  incorrectAnswer1: Jordan
+  incorrectAnswer2: South Africa
   characterImage: {fileID: 21300000, guid: daea0f0795c7cbf439d7d1be37abb1ab, type: 3}
 --- !u!1001 &1463447452
 PrefabInstance:
@@ -8803,8 +8801,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -171, y: 0}
-  m_SizeDelta: {x: 179.01, y: 316}
+  m_AnchoredPosition: {x: -211, y: 0.000022292}
+  m_SizeDelta: {x: 364, y: 277.81}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1511293280
 MonoBehaviour:
@@ -8826,8 +8824,8 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 180, y: 68.8}
-  m_Spacing: {x: 0, y: 19.35}
+  m_CellSize: {x: 362.7, y: 64.8}
+  m_Spacing: {x: 0, y: 13.7}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!114 &1511293281
@@ -9717,8 +9715,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 61
+  m_fontSizeBase: 61
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9968,7 +9966,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1720577159}
   m_Layer: 0
-  m_Name: Students
+  m_Name: NPCs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10012,10 +10010,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: Cone
-  characterDialogue: Whats the northmost capital city? A:Dublin, B:Moscow C:Ottawa
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterDialogue: Whats the northmost capital city?
+  correctAnwser: Moscow
+  incorrectAnswer1: Ottawa
+  incorrectAnswer2: Dublin
   characterImage: {fileID: 21300000, guid: daea0f0795c7cbf439d7d1be37abb1ab, type: 3}
 --- !u!1 &1738712092
 GameObject:
@@ -10102,8 +10100,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 61
+  m_fontSizeBase: 61
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10884,10 +10882,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: coolio
-  characterDialogue: 'What do cows drink? A: MIlk, B:Water, C:Beer'
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterDialogue: What do cows drink?
+  correctAnwser: Water
+  incorrectAnswer1: Milk
+  incorrectAnswer2: Beer
   characterImage: {fileID: 21300000, guid: daea0f0795c7cbf439d7d1be37abb1ab, type: 3}
 --- !u!1 &1868276082
 GameObject:
