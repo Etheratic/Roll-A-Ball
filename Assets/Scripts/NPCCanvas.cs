@@ -37,8 +37,6 @@ public class NPCCanvas : MonoBehaviour
     private void TogglePanel(bool npcPanelState)
     {
         npcPanel.SetActive(npcPanelState);
-
-       
     }
     
  
