@@ -9537,7 +9537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7700066805494912366, guid: 53d59ed9c4edf124a9c44c4212aa8e9c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 21.0042
+      value: 20.5041
       objectReference: {fileID: 0}
     - target: {fileID: 7700066805494912366, guid: 53d59ed9c4edf124a9c44c4212aa8e9c, type: 3}
       propertyPath: m_LocalRotation.w
@@ -29313,11 +29313,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bee94c39669ee54197784fc1f811ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  characterDialogue: 
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterName: Kyle
+  characterDialogue: "\u201CTorchwood\u201D is an anagram and spin-off of what popular
+    British sci-fi series?"
+  correctAnwser: Doctor Who
+  incorrectAnswer1: Family Guy
+  incorrectAnswer2: Croud Hoot
   characterImage: {fileID: 0}
 --- !u!1001 &1367404763
 PrefabInstance:
@@ -37267,11 +37268,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bee94c39669ee54197784fc1f811ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  characterDialogue: 
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterName: Evalin
+  characterDialogue: What is the first soft drink in space?
+  correctAnwser: coke
+  incorrectAnswer1: pepsi
+  incorrectAnswer2: the dew
   characterImage: {fileID: 0}
 --- !u!1001 &1698177627
 PrefabInstance:
@@ -41075,11 +41076,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bee94c39669ee54197784fc1f811ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  characterDialogue: 
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterName: Katie
+  characterDialogue: what is the most popular sport
+  correctAnwser: Soccar
+  incorrectAnswer1: Basketball
+  incorrectAnswer2: AFL
   characterImage: {fileID: 0}
 --- !u!1001 &1926425804
 PrefabInstance:
@@ -42634,11 +42635,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bee94c39669ee54197784fc1f811ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  characterDialogue: 
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterName: Bruce
+  characterDialogue: What would a Spermologist collect
+  correctAnwser: Trivia
+  incorrectAnswer1: sperm whales
+  incorrectAnswer2: Seeds
   characterImage: {fileID: 0}
 --- !u!4 &2005061687 stripped
 Transform:
@@ -43688,11 +43689,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bee94c39669ee54197784fc1f811ad1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: 
-  characterDialogue: 
-  correctAnwser: 
-  incorrectAnswer1: 
-  incorrectAnswer2: 
+  characterName: Jerry
+  characterDialogue: Which of these shows is not not made by disney
+  correctAnwser: Ben 10
+  incorrectAnswer1: Gravity Falls
+  incorrectAnswer2: Fish Hooks
   characterImage: {fileID: 0}
 --- !u!1001 &2070146355
 PrefabInstance:
