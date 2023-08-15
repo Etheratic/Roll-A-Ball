@@ -6,10 +6,17 @@ public class Rotator : MonoBehaviour
 {
     public float speed = 1.0f;
 
+
     void Update()
     {
         //rotating
 
-        transform.Rotate(new Vector3(15, 30, 45) * Time.deltaTime * speed);
+        transform.Rotate(new Vector3(0, 0.01f, 0) * Time.deltaTime * speed);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(other.gameObject);
+    }
+
 }

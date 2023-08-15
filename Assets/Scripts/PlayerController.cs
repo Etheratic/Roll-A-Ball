@@ -20,6 +20,8 @@ public class PlayerController : MonoBehaviour
     CameraController cameraController;
     GameController gameController;
     private Timer timer;
+ private NPCController npcController;
+
 
     [Header("UI")]
     public GameObject inGamePanel;
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
     public TMP_Text scoreText;
     public TMP_Text timerText;
     public TMP_Text winTimeText;
+    public GameObject npcPanel;
+
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +42,7 @@ public class PlayerController : MonoBehaviour
         CheckPickups();
         //get the timer object
         
+        isTalking = false;
 
         //Turn on our in Game Panel
         inGamePanel.SetActive(true);
@@ -57,6 +62,8 @@ public class PlayerController : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         if (gameController.gameType == GameType.SpeedRun)
             StartCoroutine(timer.StartCountdown());
+
+       
     }
 
     private void Update()
@@ -70,11 +77,13 @@ public class PlayerController : MonoBehaviour
             rb.drag = 0.1f;
         }
     }
-   
+ 
 
     // Update is called once per frame
     void FixedUpdate()
     {
+     
+
         if (gameController.gameType == GameType.SpeedRun && !timer.IsTiming())
             return;
 
@@ -100,31 +109,10 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(movement * speed);
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Pick Up")
-        {
-            Destroy(other.gameObject);
-            //decrement the pickup count
-            pickupCount -= 1;
-            //Run the check pickups function
-            CheckPickups();
-            Time.timeScale = 0;
-        }
-
-        if (other.GetComponent<NPCController>() != null)
-        {
-            other.GetComponent<NPCController>().StartNPC();
-        }
-    }
-
-
-
-    void CheckPickups()
+    public void CheckPickups()
     {
         //Display amount of pickups on ours screen
         scoreText.text = "Pick Ups Left: " + pickupCount;
-
         //display win screen if pickups = 0
         if (pickupCount == 0)
         {
@@ -132,6 +120,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    
     void WinGame()
     {
         //set the gameOver to try
@@ -150,7 +139,7 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    //temporary, will be removed for A2
+   
 
     public void RestartGame()
     {
@@ -169,6 +158,19 @@ public class PlayerController : MonoBehaviour
         {
             StartCoroutine(ResetPlayer());
         }
+
+        if (collision.gameObject.GetComponent<NPCController>() != null)
+        {
+            collision.gameObject.GetComponent<NPCController>().StartNPC();
+            //decrement the pickup count
+            pickupCount -= 1;
+            //Run the check pickups function
+            //CheckPickups();
+            //turn isTalking on
+         
+        }
+
+
     }
 
     public IEnumerator ResetPlayer()
