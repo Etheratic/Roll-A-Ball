@@ -14,6 +14,7 @@ public class NPCController : MonoBehaviour
     public Sprite characterImage;
     private NPCCanvas npcCanvas;
     private PlayerController playerController;
+    
    
 
     // Start is called before the first frame update

@@ -16,6 +16,8 @@ public class NPCCanvas : MonoBehaviour
     public GameObject correct;
     public GameObject wrong;
     public float delaytime;
+    private int points; 
+    
 
 
 
@@ -48,7 +50,7 @@ public class NPCCanvas : MonoBehaviour
             Time.timeScale = 1;
     }
     
-  
+    
     
     public void ClosePanel()
     {

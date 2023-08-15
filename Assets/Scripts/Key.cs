@@ -4,15 +4,25 @@ using UnityEngine;
 
 public class Key : MonoBehaviour
 {
+    public GameObject door;
+    public GameObject unlocked;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        unlocked.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        Destroy(door);
+        unlocked.SetActive(true);
+        StartCoroutine(WaitToCloseUnlocked());
+    }
+
+    IEnumerator WaitToCloseUnlocked()
+    {
+        yield return new WaitForSecondsRealtime(1);
+        unlocked.SetActive(false);
     }
 }

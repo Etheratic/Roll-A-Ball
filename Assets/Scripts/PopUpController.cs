@@ -9,6 +9,7 @@ public class PopUpController : MonoBehaviour
     public bool togglePanel;
 
 
+
     void Start()
     {
         togglePanel = true;

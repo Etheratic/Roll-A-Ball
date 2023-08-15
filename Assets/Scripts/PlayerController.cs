@@ -30,6 +30,7 @@ public class PlayerController : MonoBehaviour
     public TMP_Text timerText;
     public TMP_Text winTimeText;
     public GameObject npcPanel;
+    
 
 
     // Start is called before the first frame update
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
     public void CheckPickups()
     {
         //Display amount of pickups on ours screen
-        scoreText.text = "Pick Ups Left: " + pickupCount;
+        scoreText.text = "Students Hidden: " + pickupCount;
         //display win screen if pickups = 0
         if (pickupCount == 0)
         {
