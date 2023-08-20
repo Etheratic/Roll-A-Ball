@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rb;
     private int pickupCount;
 
+    //contollers
+    SoundController soundController;
+
     private bool gameOver = false;
     public bool isTalking;
     GameObject resetPoint;
@@ -51,6 +54,8 @@ public class PlayerController : MonoBehaviour
         //Turn off our win panel
         winPanel.SetActive(false);
 
+        soundController = FindObjectOfType<SoundController>();
+
         //setting up reset point
         resetPoint = GameObject.Find("Reset Point");
         originalColour = GetComponent<Renderer>().material.color;
@@ -63,6 +68,7 @@ public class PlayerController : MonoBehaviour
         timer = FindObjectOfType<Timer>();
         if (gameController.gameType == GameType.SpeedRun)
             StartCoroutine(timer.StartCountdown());
+
 
        
     }
@@ -130,13 +136,17 @@ public class PlayerController : MonoBehaviour
         winPanel.SetActive(true);
         //turn off our ingame panel
         inGamePanel.SetActive(false);
+
+        soundController.PlayWinSound();
       
         //set the velocity of the rigidbody to 0
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
 
         if (gameController.gameType == GameType.SpeedRun)
-            timer.StopTimer();    
+            timer.StopTimer();
+        
+
     }
 
 
@@ -168,11 +178,19 @@ public class PlayerController : MonoBehaviour
             //Run the check pickups function
             //CheckPickups();
             //turn isTalking on
-         
+            soundController.PlayPickupSound();
         }
 
-
+        if(collision.gameObject.CompareTag("Wall"))
+        {
+            soundController.PlayCollisionSound(collision.gameObject);
+        }
     }
+
+  
+
+
+
 
     public IEnumerator ResetPlayer()
 

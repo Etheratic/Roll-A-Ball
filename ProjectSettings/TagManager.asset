@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Wall
   - Text
+  - MetalWall
   layers:
   - Default
   - TransparentFX
