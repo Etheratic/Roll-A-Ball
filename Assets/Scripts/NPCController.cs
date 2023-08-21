@@ -25,13 +25,9 @@ public class NPCController : MonoBehaviour
 
     public void StartNPC()
     {
-
+        //inputing all the text info for the npc dialogue
         npcCanvas.UpdateCanvas(characterName, characterDialogue, characterImage, correctAnwser, incorrectAnswer1,incorrectAnswer2);
         GetComponent<Collider>().enabled = false;
         
     }
-
-   
-
-
 }

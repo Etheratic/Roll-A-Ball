@@ -9,7 +9,7 @@ public class Janitor : MonoBehaviour
     public GameObject door;
     public GameObject unlockedPanel;
 
-    // Start is called before the first frame update
+ 
     void Start()
     {
         dialogue.SetActive(false);
@@ -33,6 +33,7 @@ public class Janitor : MonoBehaviour
     }
 
     IEnumerator WaitToCloseUnlocked()
+        //close panel after a delay of 1 second
     {
         yield return new WaitForSecondsRealtime(1);
         unlockedPanel.SetActive(false);

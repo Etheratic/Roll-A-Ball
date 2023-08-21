@@ -16,13 +16,14 @@ public class NPCCanvas : MonoBehaviour
     public GameObject correct;
     public GameObject wrong;
     public float delaytime;
-    private int points; 
-    
+    public int points;
+    public Points pointManager;
 
 
 
     private void Start()
     {
+        //have the panels invisible when the game is started
         TogglePanel(false);
         correct.SetActive(false);   
         wrong.SetActive(false);
@@ -30,6 +31,7 @@ public class NPCCanvas : MonoBehaviour
 
     public void UpdateCanvas(string name,string dialogue,Sprite image, string correct, string incorrect1, string incorrect2)
     {
+        //defining all the types of information being fed in
         TogglePanel(true);
         nameText.text = name;
         dialoguetext.text = dialogue;
@@ -43,6 +45,7 @@ public class NPCCanvas : MonoBehaviour
 
     private void TogglePanel(bool npcPanelState)
     {
+        //freeze time if the player is interacting with a npc
         npcPanel.SetActive(npcPanelState);
         if (npcPanelState == true)
             Time.timeScale = 0;
@@ -54,6 +57,7 @@ public class NPCCanvas : MonoBehaviour
     
     public void ClosePanel()
     {
+        //close panel
         TogglePanel(false);
         playerController.CheckPickups();
         
@@ -61,16 +65,22 @@ public class NPCCanvas : MonoBehaviour
 
     public void rightAnswer()
     {
+        //increase point count if button is pressed
       correct.SetActive(true);
         StartCoroutine(WaitToCloseRight());
+        pointManager.IncreasePoints();
+    
     }
 
     public void wrongAnswer()
     {
         wrong.SetActive(true);
         StartCoroutine(WaitToCloseWrong());
+      // pointManager.DecreasePoints();
+       // print("working");
     }
 
+    //have the right and wrong panel dissappear after a delay
     IEnumerator WaitToCloseRight()
     {
         yield return new WaitForSecondsRealtime(delaytime);
@@ -82,4 +92,5 @@ public class NPCCanvas : MonoBehaviour
         wrong.SetActive(false);
     }
 
+  
 }

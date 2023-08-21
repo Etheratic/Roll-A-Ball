@@ -34,6 +34,7 @@ public class Timer : MonoBehaviour
 
     void Update()
     {
+        //the number of points in the timer and how it connects to realtime
         if(timing)
         {
             currentTime += Time.deltaTime;
@@ -50,6 +51,7 @@ public class Timer : MonoBehaviour
         else
             bestTime = 1000f;
 
+        //display the countdown panels
         countdownPanel.SetActive(true);
         countdownText.text = "3";
         yield return new WaitForSeconds(1);
@@ -65,17 +67,20 @@ public class Timer : MonoBehaviour
 
     public void StartTimer()
     {
+        //begin timing
         currentTime = 0;
         timing = true;
     }
 
     public void StopTimer()
     {
+        //stop timing and display the said time
         timing = false;
         timesPanel.SetActive(true);
         myTimeResult.text = currentTime.ToString("F3");
         bestTimeResult.text = bestTime.ToString("F3");
 
+        // replace olde best time with new best time with new text.
         if (currentTime <= bestTime)
         {
             bestTime = currentTime;

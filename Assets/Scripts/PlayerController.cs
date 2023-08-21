@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     GameController gameController;
     private Timer timer;
  private NPCController npcController;
+    public Points points;
 
 
     [Header("UI")]
@@ -145,6 +146,8 @@ public class PlayerController : MonoBehaviour
 
         if (gameController.gameType == GameType.SpeedRun)
             timer.StopTimer();
+
+        points.CheckPoints();
         
 
     }
@@ -195,6 +198,7 @@ public class PlayerController : MonoBehaviour
     public IEnumerator ResetPlayer()
 
     {
+        //moving the player back to reset point when in contact with the reset zone. 
         resetting = true;
         GetComponent<Renderer>().material.color = Color.black;
         rb.velocity = Vector3.zero;

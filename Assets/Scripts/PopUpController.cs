@@ -18,6 +18,7 @@ public class PopUpController : MonoBehaviour
 
     private void Update()
     {
+        //close panel when button is pressed.
         if (Input.GetKeyUp(KeyCode.Escape))
         {
            togglePanel = false;
