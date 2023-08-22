@@ -6,8 +6,11 @@ public class SoundController : MonoBehaviour
 {
     public AudioClip pickupSound;
     public AudioClip winSound;
-
+    public AudioClip rightAnwser;
+    public AudioClip wrongAnwser;
+    public AudioClip keySound;
     AudioSource audioSource;
+    
 
     private void Start()
     {
@@ -21,6 +24,20 @@ public class SoundController : MonoBehaviour
     public void PlayWinSound()
     {
         PlaySound(winSound);
+    }
+    public void PlayRightAnwser()
+    {
+        PlaySound(rightAnwser);
+    }
+
+    public void PlayWrongAnwser()
+    {
+        PlaySound(wrongAnwser);
+    }
+
+    public void PlayKeySound()
+    {
+        PlaySound(keySound);
     }
 
     void PlaySound(AudioClip _newSound)

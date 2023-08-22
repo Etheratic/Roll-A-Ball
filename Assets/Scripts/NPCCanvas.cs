@@ -18,8 +18,7 @@ public class NPCCanvas : MonoBehaviour
     public float delaytime;
     public int points;
     public Points pointManager;
-
-
+    public List<Transform> answers;
 
     private void Start()
     {
@@ -40,7 +39,11 @@ public class NPCCanvas : MonoBehaviour
         answer2Text.text = incorrect1;
         answer3Text.text = incorrect2;
 
-       
+        ShuffleList(answers);
+
+        answers[0].SetSiblingIndex(0);
+        answers[1].SetSiblingIndex(1);
+        answers[2].SetSiblingIndex(2);       
     }
 
     private void TogglePanel(bool npcPanelState)
@@ -52,9 +55,7 @@ public class NPCCanvas : MonoBehaviour
         else 
             Time.timeScale = 1;
     }
-    
-    
-    
+            
     public void ClosePanel()
     {
         //close panel
@@ -76,8 +77,8 @@ public class NPCCanvas : MonoBehaviour
     {
         wrong.SetActive(true);
         StartCoroutine(WaitToCloseWrong());
-      // pointManager.DecreasePoints();
-       // print("working");
+        pointManager.DecreasePoints();
+        // print("working");
     }
 
     //have the right and wrong panel dissappear after a delay
@@ -92,5 +93,22 @@ public class NPCCanvas : MonoBehaviour
         wrong.SetActive(false);
     }
 
-  
+    /// <summary>
+    /// Shuffles a list using Unity's Random
+    /// </summary>
+    /// <typeparam name="T">The data type</typeparam>
+    /// <param name="_list">The list to shuffle</param>
+    /// <returns></returns>
+    public List<T> ShuffleList<T>(List<T> _list)
+    {
+        for (int i = 0; i < _list.Count; i++)
+        {
+            T temp = _list[i];
+            int randomIndex = UnityEngine.Random.Range(i, _list.Count);
+            _list[i] = _list[randomIndex];
+            _list[randomIndex] = temp;
+        }
+        return _list;
+    }
+
 }

@@ -6,6 +6,8 @@ public class Key : MonoBehaviour
 {
     public GameObject door;
     public GameObject unlocked;
+    public GameObject key;
+    public SoundController soundController;
 
     // Start is called before the first frame update
     void Start()
@@ -24,5 +26,6 @@ public class Key : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1);
         unlocked.SetActive(false);
+      Destroy(key);
     }
 }

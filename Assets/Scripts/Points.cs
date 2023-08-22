@@ -26,7 +26,11 @@ public class Points : MonoBehaviour
     public void CheckPoints()
     {
         //convert point to text
-       pointText.text = points.ToString();
+        StartCoroutine(WaitToCheckPoints());
     }
-  
+    IEnumerator WaitToCheckPoints()
+    {
+        yield return new WaitForEndOfFrame();
+        pointText.text = points.ToString();
+    }
 }
